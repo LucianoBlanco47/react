@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <NavBar/>
-      <ListProducts contenido="Proximamente Tienda Millonaria !"/>
+      <ListProducts proxi="Proximamente Tienda Millonaria !"/>
     </div>
   );
 }

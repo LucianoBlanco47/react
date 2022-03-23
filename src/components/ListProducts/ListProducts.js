@@ -1,7 +1,7 @@
-const ListProducts = ({contenido}) => {
+const ListProducts = ({proxi}) => {
     return(
         <div>
-        <h1>{contenido}</h1>
+        <h1>{proxi}</h1>
         </div>
     )
 }
