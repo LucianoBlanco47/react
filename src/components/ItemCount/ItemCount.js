@@ -1,6 +1,7 @@
-import react,{useState} from "react"
+import React,{useState} from "react"
 const ItemCount = ({stock}) => {
-    const[ contador, setContador ] = useState(0)
+    const Inicial = 1; 
+    const[ contador, setContador ] = useState(Inicial)
      
 
     const onAdd = () => {
@@ -10,7 +11,7 @@ const ItemCount = ({stock}) => {
     }
 
     const offAdd = () => {
-        if(contador => stock) {
+        if(contador > Inicial) {
         setContador(contador - 1)
         }
    }
