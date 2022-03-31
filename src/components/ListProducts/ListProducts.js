@@ -47,12 +47,14 @@ const mockProductos = [{
 
 
  useEffect(() => {
-      mostrarProductos().then((data)=>{
+      mostrarProductos
+        .then((data)=>{
           setProducts(data)
-      }).finally(() => {
+      })
+      .finally(() => {
         console.log("Termino la llamada")
-     })
-    },[])
+     });
+    },[]);
     
     
 
