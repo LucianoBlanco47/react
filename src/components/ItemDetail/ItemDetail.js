@@ -1,5 +1,6 @@
 import React from "react"
-import ItemCount from "./ItemCount/ItemCount"
+import ItemCount from "../ItemCount/ItemCount"
+
 
 
 const ItemDetail = ({ props }) => {
@@ -33,5 +34,5 @@ const ItemDetail = ({ props }) => {
         
     )
 }
-export default ItemDetail
+export default ItemDetail;
  

@@ -51,7 +51,7 @@ const mockProductos = [{
 
 
  useEffect(() => {
-      mostrarProductos
+      mostrarProductos()
         .then((data)=>{
           setProducts(data)
       })

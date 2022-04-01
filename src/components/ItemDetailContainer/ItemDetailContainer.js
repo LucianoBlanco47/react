@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import mockProductos from '../ListProducts'
-import ItemDetail from './ItemDetail';
+import ListProducts from '../ListProducts/ListProducts';
+import ItemDetail from '../ItemDetail/ItemDetail';
 
 
 const ItemDetailContainer = () =>{
@@ -9,7 +9,7 @@ const ItemDetailContainer = () =>{
 
     const getProducts = () =>{
         return new Promise ( (resolve,reject) =>{
-            return resolve (mockProductos);
+            return resolve (ListProducts);
         })
     }
 
