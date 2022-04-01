@@ -8,6 +8,7 @@ const mockProductos = [{
     talle : "XL",
     image : "./camiseta1.jpg",
     price : 9000,
+    description : "camiseta Negra y Roja",
     stock : 10
   },
   
@@ -17,6 +18,7 @@ const mockProductos = [{
     talle : "L",
     image : "./camiseta2.jpg",
     price : 7500,
+    description : "camiseta Roja",
     stock : 20
   },
   {
@@ -25,6 +27,7 @@ const mockProductos = [{
     talle : "S",
     image : "./camiseta3.jpg",
     price : 8500,
+    description : "camiseta Blanca",
     stock : 9
   },
   {
@@ -33,6 +36,7 @@ const mockProductos = [{
     talle : "M",
     image : "./camiseta4.jpg",
     price : 4500,
+    description : "camiseta Negra ",
     stock : 21
   }]
   
@@ -53,8 +57,8 @@ const mockProductos = [{
       })
       .finally(() => {
         console.log("Termino la llamada")
-     });
-    },[]);
+     })
+    },[])
     
     
 
