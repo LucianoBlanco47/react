@@ -1,26 +1,28 @@
 import React from "react"
 import ItemCount from "../ItemCount/ItemCount"
+import mockProductos from "../Products/Products";
+import "./ItemDetail.css"
 
 
 
-const ItemDetail = ({ props }) => {
+const ItemDetail = () => {
 
-    const{ title, description, image, stock, price } = props;
+    // const{ title, description, image, stock, price } = props;
 
     return (
-        <div >
+        <div className="card-item">
             <div>
-                <img src={image}/>
+                {/* <img src={image} alt={title}/> */}
             </div>
 
             <div>
               <div>
-                  <h2>{title}</h2>
-                  <p>{description}</p>
-                  <p>${price}</p>
-                  <p>12 coutas de $ { (price/12).toFixed(2)}</p>
-                  {stock>3 ? <p className="stock">stock disponible</p> : <p className="stockOut">Sin stock</p> }
-                  <ItemCount stock={ stock} />
+                  <h2>remera1</h2>
+                  <p>camiseta Negra y Roja</p>
+                  <p>$9000</p>
+                  <p>12 coutas de $ { (9000/12).toFixed(2)}</p>
+                  <p>stock : 15</p>
+                  {/* <ItemCount stock={ stock} /> */}
                 </div>
 
               <div>
