@@ -1,38 +1,38 @@
 const mockProductos = [{
-    id: 1,
-    title : "Camiseta1", 
+    id: "1",
+    title : "Camiseta NyR", 
     talle : "XL",
-    image : "./camiseta1.jpg",
+    image : "camiseta1.jpg",
     price : 9000,
-    description : "camiseta Negra y Roja",
+    description : "Camiseta entrenamiento temporada 11/12 ",
     stock : 10
   },
   
   {
-    id: 2,
-    title : "Camiseta2", 
+    id: "2",
+    title : "Camiseta Roja", 
     talle : "L",
-    image : "./camiseta2.jpg",
+    image : "camiseta2.jpg",
     price : 7500,
-    description : "camiseta Roja",
+    description : "Camiseta suplente temporada 10/11 ",
     stock : 20
   },
   {
-    id: 3,
-    title : "Camiseta3", 
+    id: "3",
+    title : "Camiseta Blanca", 
     talle : "S",
-    image : "./camiseta3.jpg",
+    image : "camiseta3.jpg",
     price : 8500,
-    description : "camiseta Blanca",
+    description : "Camiseta entrenamiento temporada 13/14 ",
     stock : 9
   },
   {
-    id: 4,
-    title : "Camiseta4", 
+    id: "4",
+    title : "Camiseta Negra", 
     talle : "M",
-    image : "./camiseta4.jpg",
+    image : "camiseta4.jpg",
     price : 4500,
-    description : "camiseta Negra ",
+    description : "Camiseta entrenamiento temporada 16/17 ",
     stock : 21
   }]
 

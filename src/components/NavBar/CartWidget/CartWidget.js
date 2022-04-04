@@ -2,7 +2,7 @@ const CartWidget = () => {
     return (
         <div>
 
-            <img src="carrito.png"
+            <img src="../carrito.png"
             className="carrito"/>
 
         </div>

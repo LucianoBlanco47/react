@@ -1,28 +1,41 @@
-import React from "react"
-import ItemCount from "../ItemCount/ItemCount"
+import React, { useEffect, useState } from "react"
 import mockProductos from "../Products/Products";
 import "./ItemDetail.css"
+import { useParams } from "react-router-dom";
 
 
 
 const ItemDetail = () => {
+    const{ id } = useParams()
+    const [product, setProduct] = useState({})
 
-    // const{ title, description, image, stock, price } = props;
+    useEffect( () => {
+        filterProductId(mockProductos, id)
+    },[])
+
+    const filterProductId = (array , id) => {
+        return array.map( (product) => {
+            if(product.id == id) {
+                return setProduct(product)
+            }
+        } )
+    }
+    
 
     return (
         <div className="card-item">
             <div>
-                {/* <img src={image} alt={title}/> */}
+                <img src={`../${product.image}`}/>
             </div>
 
             <div>
               <div>
-                  <h2>remera1</h2>
-                  <p>camiseta Negra y Roja</p>
-                  <p>$9000</p>
-                  <p>12 coutas de $ { (9000/12).toFixed(2)}</p>
-                  <p>stock : 15</p>
-                  {/* <ItemCount stock={ stock} /> */}
+                  <h2>{product.title}</h2>
+                  <p>{product.description}</p>
+                  <p>Precio: ${product.price}</p>
+                  <p>Stock:{product.stock}</p>
+                  <p>Talle:{product.talle}</p>
+                  
                 </div>
 
               <div>
