@@ -15,9 +15,11 @@ function App() {
       
       <Routes>
          <Route path='/' element={<HomePage/>}/>
+         <Route path='/category' element={<HomePage/>}/>
+         <Route path='/category/:id' element={<ItemDetail/>}/>
          <Route path='/contacto' element={<Contacto/>}/>
          <Route path='*' element={<NotFound/>}/>
-         <Route path='/productos/:id' element={<ItemDetail/>}/>
+         
 
 
         

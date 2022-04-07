@@ -1,16 +1,21 @@
 
 import "./Card.css"
 import ItemCount from "../ItemCount/ItemCount"
+import { useNavigate } from "react-router-dom"
 
 
 export default function Cards({ data }) {
-    const {title, price, talle, stock, image} = data
+    const {title, price, talle, stock, image, id} = data
+    const navigate= useNavigate()
+    const changePage=() =>{
+        navigate(`/category/${id}`)
+    }
     
 
     
 
     return(
-        <div className="card-item">
+        <div className="card-item" onClick={changePage}>
             <img src={image} alt={image}/>
             
           <div className="container-card-data" > 
