@@ -13,7 +13,7 @@ function NavBar() {
            </div>
          <ul className= 'navbar'>
              <li><button><Link to={'/'}>Inicio</Link></button></li>
-             <li><button>Tienda</button></li>
+             <li><button><Link to={'/Tienda'}>Tienda</Link></button></li>
              <li><button><Link to={'/Contacto'}>Contacto</Link></button></li>
          </ul>   
          <CartWidget/>

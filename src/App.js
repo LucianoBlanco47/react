@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import HomePage from './Pages/Home';
 import NotFound from './Pages/NotFound';
 import Contacto from './Pages/Contacto';
+import Tienda from './Pages/Tienda';
 import ItemDetail from './components/ItemDetail/ItemDetail';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
          <Route path='/category' element={<HomePage/>}/>
          <Route path='/category/:id' element={<ItemDetail/>}/>
          <Route path='/contacto' element={<Contacto/>}/>
+         <Route path='/tienda' element={<Tienda/>}/>
          <Route path='*' element={<NotFound/>}/>
          
 
