@@ -11,6 +11,10 @@ export default function Cards({ data }) {
         navigate(`/category/${id}`)
     }
     
+    const addToCart =(e) => {
+        e.stopPropagation()
+        console.log("Agrego al carrito")
+    }
 
     
 
@@ -22,9 +26,9 @@ export default function Cards({ data }) {
              <h2>{title}</h2>
              <p>Precio : $ {price}</p>
              <p>Talle : {talle}</p>
-             <ItemCount stock={stock}/>
+             
              <br></br>
-             <button>Agregar al Carrito</button>
+             <button onClick={addToCart}>Agregar al Carrito</button>
           </div>
         </div>
     )

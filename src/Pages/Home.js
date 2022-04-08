@@ -5,7 +5,7 @@ import ItemDetail from '../components/ItemDetail/ItemDetail';
 const HomePage =() =>{
     return(
         <div className='container-general'>
-            <ListProducts/>
+            <h1>IR A LA  TIENDA!!!!!!!</h1>
         </div>
     )
 }

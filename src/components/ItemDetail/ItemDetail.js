@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import mockProductos from "../Products/Products";
 import "./ItemDetail.css"
 import { useParams } from "react-router-dom";
-
+import ItemCount from "../ItemCount/ItemCount"
 
 
 const ItemDetail = () => {
@@ -20,7 +20,15 @@ const ItemDetail = () => {
             }
         } )
     }
+    const addProduct = (aasd) => {
+
+        alert (`Has agregado ${aasd} producto/s`)
     
+    
+    
+    
+    
+    }
 
     return (
         <div className="card-item">
@@ -35,14 +43,10 @@ const ItemDetail = () => {
                   <p>Precio: ${product.price}</p>
                   <p>Stock:{product.stock}</p>
                   <p>Talle:{product.talle}</p>
-                  
+                  <p className='mostrarCantidad'>Cantidad:<ItemCount stock={product.stock} addProduct={addProduct} /></p>
                 </div>
 
-              <div>
-                  <button>Comprar</button>
-                  <button>Agregar al Carro</button>
-
-                </div>
+              
             </div>
         </div>
 

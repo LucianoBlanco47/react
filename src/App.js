@@ -7,7 +7,7 @@ import NotFound from './Pages/NotFound';
 import Contacto from './Pages/Contacto';
 import Tienda from './Pages/Tienda';
 import ItemDetail from './components/ItemDetail/ItemDetail';
-
+import Cart from './Pages/Cart';
 function App() {
   return (
     <div className="App">
@@ -20,6 +20,7 @@ function App() {
          <Route path='/category/:id' element={<ItemDetail/>}/>
          <Route path='/contacto' element={<Contacto/>}/>
          <Route path='/tienda' element={<Tienda/>}/>
+         <Route path="/cart" element={<Cart />} />
          <Route path='*' element={<NotFound/>}/>
          
 

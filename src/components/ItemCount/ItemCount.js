@@ -1,5 +1,7 @@
 import React,{useState} from "react"
-const ItemCount = ({stock}) => {
+import { Link } from 'react-router-dom';
+
+const ItemCount = ({stock, addProduct}) => {
     const Inicial = 1; 
     const[ contador, setContador ] = useState(Inicial)
      
@@ -15,6 +17,7 @@ const ItemCount = ({stock}) => {
         setContador(contador - 1)
         }
    }
+
     
 
     return(
@@ -22,8 +25,14 @@ const ItemCount = ({stock}) => {
          <button onClick={onAdd}>+</button>
          <p>{contador}</p>
          <button onClick={offAdd}>-</button>
+         <div>
+           <Link to={`/Cart`}>
+            <button onClick={() => addProduct(contador)}>Comprar</button>
+           </Link>
+         </div>
       </>
     )
 }
+
 
 export default ItemCount
