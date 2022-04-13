@@ -1,20 +1,42 @@
-
+import React,{ useState, useEffect, useContext} from "react"
 import "./Card.css"
-import ItemCount from "../ItemCount/ItemCount"
 import { useNavigate } from "react-router-dom"
+import CartContext from "../Context/CartContext"
+import ItemCount from '../ItemCount/ItemCount'
 
 
-export default function Cards({ data }) {
+export default function Card({ data, action }) {
     const {title, price, talle, stock, image, id} = data
     const navigate= useNavigate()
+    const { cartProducts, addProductToCart} = useContext(CartContext)
+    const [ contador, setContador ] = useState(1)
+    const [ contadorTest, setContadorTest ] = useState(1)
+
+    useEffect( () => {
+        console.log("cartProducts:", cartProducts)
+        const onScrollWindow = () => {
+            if(window.scrollY > 100 ){
+                console.log("Scroll mayor a 100")
+            }
+        }
+        window.addEventListener("scroll", onScrollWindow)
+        
+        return () => {
+            window.removeEventListener("scroll", onScrollWindow)
+        }
+        
+    }, [])
+
+
     const changePage=() =>{
         navigate(`/category/${id}`)
     }
     
     const addToCart =(e) => {
         e.stopPropagation()
-        console.log("Agrego al carrito")
-    }
+        console.log("Productos agregados: ", cartProducts)
+        addProductToCart(data)
+    } 
 
     
 
@@ -28,7 +50,7 @@ export default function Cards({ data }) {
              <p>Talle : {talle}</p>
              
              <br></br>
-             <button onClick={addToCart}>Agregar al Carrito</button>
+             <button onClick={addToCart}  >Comprar</button>
           </div>
         </div>
     )

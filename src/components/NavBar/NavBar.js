@@ -1,8 +1,10 @@
 import "./NavBar.css"
-import CartWidget from "./CartWidget/CartWidget"
+import CartWidget from "../CartWidget/CartWidget"
 import { Link, link } from 'react-router-dom';
+import { useState, useContext } from 'react';
 
-function NavBar() {
+function NavBar(props) {
+    
 
     return(
         <header className='main-header'>  
@@ -12,6 +14,7 @@ function NavBar() {
              </Link>
            </div>
          <ul className= 'navbar'>
+             
              <li><button><Link to={'/'}>Inicio</Link></button></li>
              <li><button><Link to={'/Tienda'}>Tienda</Link></button></li>
              <li><button><Link to={'/Contacto'}>Contacto</Link></button></li>
