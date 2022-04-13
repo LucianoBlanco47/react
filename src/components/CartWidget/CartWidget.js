@@ -18,9 +18,7 @@ const CartWidget = () => {
     const handleClose = () => {
       setAnchorEl(null);
     };
-    const deleteProduct = (product) => {
-        setCartProducts(cartProducts.filter( cartProduct => cartProduct.id !== product.id))
-    }
+    
     
     
     console.log("cartProducts: ", cartProducts)
@@ -80,7 +78,7 @@ const CartWidget = () => {
                                 <span>$ {cartProduct.price}</span>
                             </div>
                             <div >
-                                <button  onClick={removeItem}>
+                                <button  onClick={ removeItem }>
                                   <img src={`../iconbasura.png`} alt="iconobasura"/>
                                 </button>
                             
