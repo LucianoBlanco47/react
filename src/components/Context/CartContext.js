@@ -24,12 +24,22 @@ const CartProvider = ({children}) => {
     const deleteProduct = (product) => {
         setCartProducts(cartProducts.filter( cartProduct => cartProduct.id !== product.id))
     }
-
+    
+    const removeItem = (id) => {
+        
+        const indiceEncontrado = cartProducts.findIndex((product)=>{
+            return product.id === id;
+        })
+       
+        cartProducts.splice(indiceEncontrado, 1);
+    }
+    
     const data = {
         cartProducts,
         addProductToCart,
         calculeTotalPrice,
         deleteProduct,
+        removeItem,
     }
     return(
         <CartContext.Provider value={data}>

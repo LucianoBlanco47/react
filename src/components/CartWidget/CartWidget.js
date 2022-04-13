@@ -9,7 +9,7 @@ import CartContext from '../Context/CartContext';
 
 
 const CartWidget = () => {
-    const { cartProducts, setCartProducts} = useContext(CartContext)
+    const { cartProducts, setCartProducts, removeItem} = useContext(CartContext)
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -71,7 +71,7 @@ const CartWidget = () => {
                 <Divider />
                 {cartProducts.map( (cartProduct) => {
                     return(
-                        <div  key={cartProduct.id}>
+                        <MenuItem  key={cartProduct.id}>
                             <div >
                                 <img src={`../${cartProduct.image}`} /> 
                             </div>
@@ -80,12 +80,12 @@ const CartWidget = () => {
                                 <span>$ {cartProduct.price}</span>
                             </div>
                             <div >
-                                <button  onClick={() => deleteProduct(cartProduct)}>
+                                <button  onClick={removeItem}>
                                   <img src={`../iconbasura.png`} alt="iconobasura"/>
                                 </button>
                             
                             </div>
-                        </div>
+                        </MenuItem>
                     )
                 })}
                 
