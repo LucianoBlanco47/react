@@ -5,42 +5,95 @@ const CartContext = createContext ();
 
 const CartProvider = ({children}) => {
     const [cartProducts, setCartProducts] = useState([])
+    const [cuantosProductos, setCuantosProductos] = useState();
 
-    const addProductToCart = (product) => {
-        let exist = cartProducts.find(cartProduct => cartProduct.id === product.id)
-        !exist && setCartProducts(cartProducts => [...cartProducts, product])
+    const addProductToCart = (product, productQuantity) =>{
+        
+        const indiceEncontrado = cartProducts.findIndex((producto)=>{
+            return producto.id === product.id;
+        })
+        if(indiceEncontrado === -1){
+            product.cantidad = productQuantity;
+            setCartProducts(cartProducts => [...cartProducts, product]);
+            cartCantProductos();
+        }else{
+            if (product.stock < (product.cantidad + productQuantity)){
+            }else{
+                cartProducts[indiceEncontrado].cantidad += productQuantity;
+                cartCantProductos();
+            }
+        }
+    }
+    const cartTotal = () => {
+        
+        let total = 0;
+        cartProducts.map((product)=>{
+            total = total + product.price*product.cantidad;
+        });
+        return total
+    }
+    const cartLength = () => {
+        
+        let largo = cartProducts.length;
+        return largo
+    }
+    
+    const cartCantProductos = () => {
+        let cantidad = 0;
+        for(const producto of cartProducts){
+            cantidad = cantidad + producto.cantidad;
+        }
+        setCuantosProductos(cantidad);
     }
 
-    const calculeTotalPrice = () => {
-        let total = 0
-
-        cartProducts.map( (cartProduct) => {
-           total = cartProduct.price + total
+    const restarUno = (id) => {
+        
+        const indiceEncontrado = cartProducts.findIndex((producto)=>{
+            return producto.id === id;
         })
-
-        return total
+        if(indiceEncontrado === -1){
+            return;
+        }else{
+           
+            if (cartProducts[indiceEncontrado].cantidad>1){
+                cartProducts[indiceEncontrado].cantidad -= 1;
+                cartCantProductos();
+            }
+        }
+    }
+    const removeItem = (id) => {
+       
+        const indiceEncontrado = cartProducts.findIndex((producto)=>{
+            return producto.id === id;
+        })
+        
+        cartProducts.splice(indiceEncontrado, 1);
+        cartCantProductos();
+    }
+    const cleanCart = () => {
+        setCartProducts([]);
+        cartCantProductos();
     }
 
     const deleteProduct = (product) => {
         setCartProducts(cartProducts.filter( cartProduct => cartProduct.id !== product.id))
     }
-    
-    const removeItem = (id) => {
-        
-        const indiceEncontrado = cartProducts.findIndex((product)=>{
-            return product.id === id;
-        })
-       
-        cartProducts.splice(indiceEncontrado, 1);
-    }
+
+
     
     const data = {
         cartProducts,
+        cuantosProductos,
         addProductToCart,
-        calculeTotalPrice,
-        deleteProduct,
+        cartCantProductos,
+        cartLength,
+        cartTotal,
+        restarUno,
         removeItem,
+        deleteProduct,
+        cleanCart
     }
+    //return
     return(
         <CartContext.Provider value={data}>
             {children}

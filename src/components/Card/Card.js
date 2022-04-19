@@ -1,57 +1,59 @@
 import React,{ useState, useEffect, useContext} from "react"
 import "./Card.css"
-import { useNavigate } from "react-router-dom"
+import { Link } from 'react-router-dom';
 import CartContext from "../Context/CartContext"
 import ItemCount from '../ItemCount/ItemCount'
 
 
-export default function Card({ data, action }) {
+ function Card({ data}) {
     const {title, price, talle, stock, image, id} = data
-    const navigate= useNavigate()
-    const { cartProducts, addProductToCart} = useContext(CartContext)
-    const [ contador, setContador ] = useState(1)
-    const [ contadorTest, setContadorTest ] = useState(1)
-
-    useEffect( () => {
-        console.log("cartProducts:", cartProducts)
-        const onScrollWindow = () => {
-            if(window.scrollY > 100 ){
-                console.log("Scroll mayor a 100")
-            }
+    const {addProductToCart, cartProducts} = useContext(CartContext)
+    const [productQuantity, setProductQuantity] = useState(0);
+    const [mostrarItemCount, setMostrarItemCount] = useState(true);
+   
+    const onAdd = (e, contador) => {
+        if(!!e & productQuantity<1){
+            setProductQuantity(contador);
         }
-        window.addEventListener("scroll", onScrollWindow)
-        
-        return () => {
-            window.removeEventListener("scroll", onScrollWindow)
-        }
-        
-    }, [])
 
-
-    const changePage=() =>{
-        navigate(`/category/${id}`)
     }
-    
+    useEffect( () => {
+        if(productQuantity>0){
+            setMostrarItemCount(false);
+            addProductToCart(data, productQuantity);
+        }
+    },[productQuantity]) 
+
     const addToCart =(e) => {
         e.stopPropagation()
         console.log("Productos agregados: ", cartProducts)
         addProductToCart(data)
-    } 
-
+      } 
+        
     
 
     return(
-        <div className="card-item" onClick={changePage}>
-            <img src={image} alt={image}/>
-            
+        <div className="card-item" >
+             <Link to={`/category/${id}`}>
+               <img src={image} alt={image} />
+             </Link>
           <div className="container-card-data" > 
              <h2>{title}</h2>
              <p>Precio : $ {price}</p>
              <p>Talle : {talle}</p>
              
-             <br></br>
-             <button onClick={addToCart}  >Comprar</button>
           </div>
+          {mostrarItemCount ?(
+                <ItemCount stock={stock} initial={1} action={onAdd}/>
+                ):( <Link to="/cart">
+                        <button>Finalizar Compra</button>
+                    </Link>
+                    )
+            }
         </div>
+          
+      
+        
     )
 }
+export default Card

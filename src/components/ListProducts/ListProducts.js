@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import Cards from '../Card/Card'
-import mockProductos from '../Products/Products'
-import { useParams } from 'react-router-dom'
 
+import { useParams } from 'react-router-dom'
+import { collection, getDocs } from 'firebase/firestore'
+import db from '../../firebase'
 
 const ListProducts = () => {
 
@@ -11,10 +12,18 @@ const ListProducts = () => {
   const [products, setProducts] = useState([])
 
   
-  const getProducts = () => {
-      return new Promise ((resolve, reject) => {
-          return resolve(mockProductos)
-      })
+  const getProducts = async () => {
+    const itemCollection = collection(db, 'productos')   
+    const productosSnapshot = await getDocs(itemCollection)  
+    const  productList = productosSnapshot.docs.map((doc) => {
+             let product = doc.data()
+             product.id = doc.id
+             console.log('product:', product)
+             return product  
+         }
+    )
+    return productList
+    
   }
   
   useEffect( () => {
