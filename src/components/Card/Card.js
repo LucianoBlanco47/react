@@ -7,7 +7,7 @@ import ItemCount from '../ItemCount/ItemCount'
 
  function Card({ data}) {
     const {title, price, talle, stock, image, id} = data
-    const {addProductToCart, cartProducts} = useContext(CartContext)
+    const {addProductToCart, } = useContext(CartContext)
     const [productQuantity, setProductQuantity] = useState(0);
     const [mostrarItemCount, setMostrarItemCount] = useState(true);
    
@@ -24,12 +24,7 @@ import ItemCount from '../ItemCount/ItemCount'
         }
     },[productQuantity]) 
 
-    const addToCart =(e) => {
-        e.stopPropagation()
-        console.log("Productos agregados: ", cartProducts)
-        addProductToCart(data)
-      } 
-        
+    
     
 
     return(

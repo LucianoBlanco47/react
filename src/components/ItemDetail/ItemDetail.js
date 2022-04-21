@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const ItemDetail = ({data}) => {
   const{ id } = useParams();
   const [product, setProduct] = useState({});
-  const { cartProducts, addProductToCart} = useContext(CartContext);
+  const {addProductToCart} = useContext(CartContext);
   const [productQuantity, setProductQuantity] = useState(0);
   const [mostrarItemCount, setMostrarItemCount] = useState(true);
 
@@ -40,7 +40,11 @@ const ItemDetail = ({data}) => {
 
     useEffect( () => {
       getProduct()
-  }, [id])
+      if(productQuantity>0){
+        setMostrarItemCount(false);
+        addProductToCart(data, productQuantity);
+    }
+},[productQuantity, id])
   
   return (
       <div className="card-item">

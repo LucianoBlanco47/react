@@ -78,7 +78,12 @@ const CartProvider = ({children}) => {
     const deleteProduct = (product) => {
         setCartProducts(cartProducts.filter( cartProduct => cartProduct.id !== product.id))
     }
-
+    const addToCart =(e) => {
+        e.stopPropagation()
+        console.log("Productos agregados: ", cartProducts)
+        addProductToCart(data)
+      } 
+        
 
     
     const data = {
@@ -91,7 +96,8 @@ const CartProvider = ({children}) => {
         restarUno,
         removeItem,
         deleteProduct,
-        cleanCart
+        cleanCart,
+        addToCart
     }
     //return
     return(

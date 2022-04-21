@@ -73,7 +73,8 @@ const CartWidget = () => {
                             </div>
                             <div >
                                 <p>{cartProduct.title}</p>
-                                <span>$ {cartProduct.price}</span>
+                                <span>$ {cartProduct.price * cartProduct.cantidad}</span>
+                                <p>Cantidad: {cartProduct.cantidad}</p>
                             </div>
                             <div >
                                 <button  onClick={ removeItem }>
