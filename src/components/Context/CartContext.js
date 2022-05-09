@@ -83,6 +83,10 @@ const CartProvider = ({children}) => {
         console.log("Productos agregados: ", cartProducts)
         addProductToCart(data)
       } 
+
+      const cartQty = () => {
+        return cartProducts.reduce((total, product) => total += product.cantidad, 0)
+    }
         
 
     
@@ -97,7 +101,8 @@ const CartProvider = ({children}) => {
         removeItem,
         deleteProduct,
         cleanCart,
-        addToCart
+        addToCart,
+        cartQty
     }
     //return
     return(

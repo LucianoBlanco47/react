@@ -117,6 +117,10 @@ function Cart () {
                             <div >
                                 <p>Stock:{stock}</p>
                             </div>
+                            <div >
+                                <p>Cantidad: {cartProduct.cantidad}</p>
+                            </div>
+                            
                             
                             <div>
                                 <button  onClick={() => deleteProduct(cartProduct)}>

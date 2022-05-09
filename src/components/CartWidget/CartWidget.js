@@ -9,7 +9,7 @@ import CartContext from '../Context/CartContext';
 
 
 const CartWidget = () => {
-    const { cuantosProductos, cartCantProductos, cartProducts, removeItem, cleanCart, cantidad} = useContext(CartContext)
+    const { cartProducts, removeItem, cleanCart, cantidad} = useContext(CartContext)
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
